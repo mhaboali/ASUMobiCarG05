@@ -1,4 +1,6 @@
-Firstly , I want a sensor to measure velocity of motors 
+                                                 how make the car draw shapes
+                             
+ I want a sensor to measure velocity of motors 
 
 1 - to make the car walk a certain distance ,you should send the distance to code then the code receives it and calculates the time that the car need to walk this distance.
 T=distance/velocity
