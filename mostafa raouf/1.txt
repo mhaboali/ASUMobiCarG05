@@ -1,0 +1,14 @@
+Firstly , I want a sensor to measure velocity of motors 
+
+1 - to make the car walk a certain distance ,you should send the distance to code then the code receives it and calculates the time that the car need to walk this distance.
+T=distance/velocity
+
+2 -  to make the car rotate a certain angle ,you should send the angle to code then the code receives it and calculates the time that the car need to rotate this angle.
+T=radius*angle/velocity
+
+3 - to make the car make infinity shape  ,you should send the  angle=360  to code then the code receives it and calculates the time that the car need to rotate this angle to make a circle .then make the car rotate a circle to another hand  
+T=radius*angle/velocity
+
+
+
+Note : we should do this experiment more than once to reduce the error 
