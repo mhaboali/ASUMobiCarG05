@@ -28,8 +28,9 @@ void setup()
   pinMode (echo_pin_front,INPUT);
   pinMode (trig_pin_rear,OUTPUT);
   pinMode (echo_pin_rear,INPUT);
-  Control_Servo.attach (8);
+  Control_Servo.attach (10);
   Serial.begin (9600);
+  Control_Servo.write(30);
 }
 
 void loop() 
@@ -65,15 +66,15 @@ void loop()
   // Easy Driving Mode
   if (Signal == "r")
   {
-    Control_Servo.write(30);
+    Control_Servo.write(60);
   }
   if (Signal == "c")
   {
-    Control_Servo.write(0);
+    Control_Servo.write(30);
   }
    if (Signal == "l")
   {
-    Control_Servo.write(-30);
+    Control_Servo.write(0);
   }
   
   //Determination of Speed;
