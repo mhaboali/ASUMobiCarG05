@@ -3,9 +3,9 @@
 
   mohamed hassan :5
 
-  mostafa raouf  :25
+  mostafa raouf  :25+10
 
-  mostafa amr    :47+10+7
+  mostafa amr    :47+10+7+10
  
   mohand waheed :10
 
