@@ -15,7 +15,7 @@
 
   hema       :22
 
-  abdo adel  :
+  abdo adel  : 10
  
   awaad     :
 
