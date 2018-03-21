@@ -11,7 +11,7 @@
 
   mohand gamal  : 24
 
-  mostafa ezz   :30
+  mostafa ezz   :30 + 10 batteries + 10 wires + l293d 20 + 25 IRs 
 
   hema       :22
 
