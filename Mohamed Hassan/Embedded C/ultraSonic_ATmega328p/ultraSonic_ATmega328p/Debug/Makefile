@@ -36,7 +36,7 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../ultraSonic_ATmega328p.c
+../ultraSonic_ATmega328p_V2.c
 
 
 PREPROCESSING_SRCS += 
@@ -46,16 +46,16 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-ultraSonic_ATmega328p.o
+ultraSonic_ATmega328p_V2.o
 
 OBJS_AS_ARGS +=  \
-ultraSonic_ATmega328p.o
+ultraSonic_ATmega328p_V2.o
 
 C_DEPS +=  \
-ultraSonic_ATmega328p.d
+ultraSonic_ATmega328p_V2.d
 
 C_DEPS_AS_ARGS +=  \
-ultraSonic_ATmega328p.d
+ultraSonic_ATmega328p_V2.d
 
 OUTPUT_FILE_PATH +=ultraSonic_ATmega328p.elf
 

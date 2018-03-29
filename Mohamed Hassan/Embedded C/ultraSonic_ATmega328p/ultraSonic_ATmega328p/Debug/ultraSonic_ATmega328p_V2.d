@@ -1,5 +1,5 @@
-ultraSonic_ATmega328p.d ultraSonic_ATmega328p.o: \
- .././ultraSonic_ATmega328p.c .././ultrasonic.h \
+ultraSonic_ATmega328p_V2.d ultraSonic_ATmega328p_V2.o: \
+ .././ultraSonic_ATmega328p_V2.c .././ultrasonic.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.2.1002\avr8-gnu-toolchain\bin\../lib/gcc/avr/4.7.2/../../../../avr/include/avr/sleep.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.2.1002\avr8-gnu-toolchain\bin\../lib/gcc/avr/4.7.2/../../../../avr/include/avr/io.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.2.1002\avr8-gnu-toolchain\bin\../lib/gcc/avr/4.7.2/../../../../avr/include/avr/sfr_defs.h \

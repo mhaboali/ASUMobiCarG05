@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>6.1</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>{73ea466f-4bcb-49e4-9008-ac5ea4a7f8d5}</ProjectGuid>
+    <ProjectGuid>{2727f2f0-8cf2-4df6-bf9f-e52ef2ace8e9}</ProjectGuid>
     <avrdevice>ATmega328P</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>ultraSonic_ATmega328p</AssemblyName>
-    <Name>ultraSonic_ATmega328p</Name>
-    <RootNamespace>ultraSonic_ATmega328p</RootNamespace>
+    <AssemblyName>Motors_Drivers</AssemblyName>
+    <Name>Motors_Drivers</Name>
+    <RootNamespace>Motors_Drivers</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -93,10 +93,10 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ultrasonic.h">
+    <Compile Include="Motors_Drivers.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ultraSonic_ATmega328p.c">
+    <Compile Include="Servo.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

@@ -27,6 +27,14 @@ int main(void)
         DeltaT=(End_Reciv-Start_Reciv);
 		echo_Time=(DeltaT*4);				//(the difference between the beginning of the echo pulse and the end of it) multiplied by 4 microseconds 
 		Distance=ceil(echo_Time/58.0);
+		if(Distance>20)
+		{
+			sbi(PORTB,PB0);
+		}
+		else
+		{
+			cbi(PORTB,PB0);
+		}
 	}
 }
 //INTERRUPTS:
@@ -41,7 +49,7 @@ ISR(TIMER0_OVF_vect)
 	
 	
 }
-ISR(INT0_vect)
+ISR(PCINT2_vect)
 {
 	if(state==0)  //Check For Rising Edge "which means that echo pin start to receive the wave
 	{
@@ -58,13 +66,18 @@ ISR(INT0_vect)
 		//tbi(PORTC,PC5);
 	}
 }
+
+ISR(INT0_vect)
+{
+	
+}
 //=======================
 void init_ultrasonic()
 {
-	sbi(DDRD,trig_pin);
-	cbi(PORTD,trig_pin);
-	cbi(DDRD,echo_pin);
-	cbi(PORTD,echo_pin);
+	sbi(DDRD,trig_pin_front);
+	cbi(PORTD,trig_pin_front);
+	cbi(DDRD,echo_pin_front);
+	cbi(PORTD,echo_pin_front);
 }
 void init_timer0()
 {
@@ -77,17 +90,18 @@ void init_timer0()
 
 void init_ext_interrupts()
 {
-	cbi(DDRD,PD2);			//Echo is an input pin
 	sbi(EICRA,ISC00);			//set trigger INT0 for Logical change mode
 	sbi(EICRA,ISC01);
 	sbi(EIMSK,INT0);			//turn on INT0
+	sbi(PCICR,PCIE2);			//enable interrupt on pin change for pins{16:23}
+	sbi(PCMSK2,PCINT21);		//choose pin PD7 for trigger the interrupt
 	//EICRA|=(1<<ISC01)|(1<<ISC00);	//set triger INT0 for rising edge mode
 	//EIMSK|=(1<<INT1);			//turn on INT1
 }
 
 void sonar()
 {
-	sbi(PORTD,trig_pin);
+	sbi(PORTD,trig_pin_front);
 	_delay_us(10);
-	cbi(PORTD,trig_pin);
+	cbi(PORTD,trig_pin_front);
 }
