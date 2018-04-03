@@ -3,7 +3,7 @@
 
   mohamed hassan :5+10
 
-  mostafa raouf  :25+10+15
+  mostafa raouf  :25+10+15+10
 
   mostafa amr    :47+10+7+10
  
@@ -11,12 +11,13 @@
 
   mohand gamal  : 24
 
-  mostafa ezz   :30 + 10 batteries + 10 wires + l293d 20 + 25 IRs 
+  mostafa ezz   :30 + 10 batteries + 10 wires + l293d 20 + 5 IRs 
 
   hema       :22
 
   abdo adel  : 10
  
-  awaad     :
-
-  mohaned mohamed:
+  awaad     :20 IRs
+  
+  mohaned mohamed:20
+ 
