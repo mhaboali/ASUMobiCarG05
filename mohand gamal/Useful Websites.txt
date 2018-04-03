@@ -1,4 +1,4 @@
-Here You Must Speed Sensor Idea:
+Speed Sensor Idea:
 https://dronebotworkshop.com/robot-car-with-speed-sensors/
 
 Equation from RPM to Linear velocity:
