@@ -15,7 +15,7 @@
 
   hema       :22
 
-  abdo adel  : 10
+  abdo adel  : 10 potentiometers + 23 line follower
  
   awaad     :20 IRs
   
