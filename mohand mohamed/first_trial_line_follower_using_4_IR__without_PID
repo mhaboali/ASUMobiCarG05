@@ -1,0 +1,87 @@
+#include <SoftwareSerial.h>
+SoftwareSerial HC05(1,0); // CONNECT 10 WITH TX & 11 WITH RX
+#include <Servo.h>
+Servo Control_Servo;
+int right_motor_in=4;
+int left_motor_in=5;
+int right_motor_PWM=11;
+int left_motor_PWM=10;
+int trig_pin_front =4;
+int echo_pin_front =5;
+int trig_pin_rear =2;
+int echo_pin_rear =3;
+//int Servo_Pos=13;
+int Speed ;
+char Data;
+String Signal;
+int ir_right=8 ;
+int ir_left=6 ;
+int ir_mid=7 ;
+int ir_front=9 ;
+int ll,lr,lm,lf,fl=1,fr=1,fm=1,ff=1;//last and folowing readings     l----->last f------>following......l----->left m----->middle r----->right f------>front    
+void setup() 
+{
+  pinMode (right_motor_in,OUTPUT);       
+  pinMode (left_motor_in,OUTPUT);      
+  pinMode (right_motor_PWM,OUTPUT);           
+  pinMode (left_motor_PWM,OUTPUT);
+  pinMode (trig_pin_front,OUTPUT);
+  pinMode (echo_pin_front,INPUT);
+  pinMode (trig_pin_rear,OUTPUT);
+  pinMode (echo_pin_rear,INPUT);
+  Control_Servo.attach (9);
+  Serial.begin (9600);
+  HC05.begin(9600);
+}
+
+void loop() 
+{
+  
+ll = digitalRead(ir_left);
+lm = digitalRead(ir_mid);
+lr = digitalRead(ir_right);
+lf = digitalRead(ir_front);
+  
+  Serial.print(lf);
+  Serial.print(lm);
+  Serial.println(lr);
+  Serial.println(ll);
+  if(ll==0&&lm==0&&lr==0)   //feedback when comes all sensor on white
+  {
+    ll=fl;
+    lm=fm;
+    lr=fr;
+  }
+
+  if(ll==0&&lm==0&&irr==1)   //right 
+  {
+    Control_Servo.write(110);
+    analogWrite (right_motor_PWM , 125);
+    digitalWrite (right_motor_in , HIGH);
+    analogWrite (left_motor_PWM , 125);
+    digitalWrite (left_motor_in , HIGH);
+  }
+  else if(ll==1&&lm==0&&lr==0)     //left
+  {
+
+    Control_Servo.write(70);
+    analogWrite (right_motor_PWM , 125);
+    digitalWrite (right_motor_in , HIGH);
+    analogWrite (left_motor_PWM , 125);
+    digitalWrite (left_motor_in , HIGH);
+  }
+  else if((lf==1&&lm==1)||(ll==0&&lm==1&&lr==0))     //forward and intersection
+  {
+    Control_Servo.write(90);
+    analogWrite (right_motor_PWM , 125);
+    digitalWrite (right_motor_in , HIGH);
+    analogWrite (left_motor_PWM , 125);
+    digitalWrite (left_motor_in , HIGH);
+  }
+
+ //memory variables
+fl=ll;
+fm=lm;
+fr=lr;        
+
+}

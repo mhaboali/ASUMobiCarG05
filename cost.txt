@@ -1,7 +1,7 @@
                                                             costs
                                        
 
-  mohamed hassan :5+10
+  mohamed hassan :5+10battery+10(jumpers&glue)
 
   mostafa raouf  :25+10+15+10
 
@@ -15,8 +15,9 @@
 
   hema       :22
 
-  abdo adel  : 10
+  abdo adel  : 10 potentiometers + 23 line follower
  
   awaad     :20 IRs
   
-  mohaned mohamed:
+  mohaned mohamed:20
+ 

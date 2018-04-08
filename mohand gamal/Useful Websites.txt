@@ -1,0 +1,5 @@
+Speed Sensor Idea:
+https://dronebotworkshop.com/robot-car-with-speed-sensors/
+
+Equation from RPM to Linear velocity:
+http://www.endmemo.com/physics/rpmlinear.php
