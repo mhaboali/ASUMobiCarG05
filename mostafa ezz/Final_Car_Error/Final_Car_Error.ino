@@ -1,27 +1,23 @@
-//Setup Bluetooth Module
-#include <SoftwareSerial.h>
-SoftwareSerial HC05(10,12); // CONNECT 10 WITH TX & 12 WITH RX
-
-//Setup Servo Motor
-#include <Servo.h> 
-Servo Control_Servo;
-
 //Initialization of Variables
-int right_motor_in=4;
-int left_motor_in=5;
+#include <SoftwareSerial.h>
+SoftwareSerial HC05(10,12); // CONNECT 10 WITH TX & 11 WITH RX
+#include <Servo.h>
+Servo Control_Servo;
+int right_motor_in=7;
+int left_motor_in=6;
 int right_motor_PWM=11;
 int left_motor_PWM=11;
-int trig_pin_front =6;
-int echo_pin_front =7;
+int trig_pin_front =4;
+int echo_pin_front =5;
 int trig_pin_rear =2;
 int echo_pin_rear =3;
+//int Servo_Pos=13;
 int Speed ;
 char Data;
 String Signal;
 
 void setup() 
 {
-  //Setup PinModes
   pinMode (right_motor_in,OUTPUT);       
   pinMode (left_motor_in,OUTPUT);      
   pinMode (right_motor_PWM,OUTPUT);           
@@ -30,37 +26,45 @@ void setup()
   pinMode (echo_pin_front,INPUT);
   pinMode (trig_pin_rear,OUTPUT);
   pinMode (echo_pin_rear,INPUT);
-  Control_Servo.attach (8); //Attach the Servo Pin
-
-  //Setup Serial Communication 
+  Control_Servo.attach (9);
   Serial.begin (9600);
   HC05.begin(9600);
 }
 
 void loop() 
 {
-//Reading recieved Character from Bluetooth
 if (HC05.available())
   {
   Data = HC05.read();
-  Serial.println(Data); //Print the recieved Character
-  } 
+  Serial.println(Data);
   
-  //Easy driving mode
+  }
+  
+ 
+  
+
+//Initialization of  Front Ultrasonics
+ 
+//Initialization of  Rear Ultrasonics
+  
+   
+  
+  
+  //Print the recieved char
+  //ُEasy driving mode
   if(HC05.available() )    
   { 
      
       //Determination of Speed;
-      if (Data == "V") //Low Speed
+      if (Data == "V") 
        Speed=50; 
-        else if (Data == "U") //Medium Speed
+        else if (Data == "U")
        Speed=255/2; 
-        else if (Data == "W") //High Speed 
+        else if (Data == "W")
        Speed=255; 
     
-    if(Data == 'F' ) //Forward
-    {
-  //Initialization of Front Ultrasonic
+    if(Data == 'B' ){
+  
   digitalWrite (trig_pin_front,LOW);  
   delayMicroseconds(2);
   digitalWrite (trig_pin_front,HIGH);
@@ -70,29 +74,32 @@ if (HC05.available())
    int duration_front=pulseIn (echo_pin_front,HIGH);
    float x_front = duration_front*0.034/2;
    float distance_front = constrain (x_front, 0 ,400);
-   //Print Front Ultrasonic Readings
-   Serial.print ("sensor front: "); 
-   Serial.println (distance_front);
-   //Check on Distance
+//Serial.print ("sensor2");
+//Serial.println (distance_front);
+Control_Servo.write(90);
+     analogWrite (right_motor_PWM , 255);
+    digitalWrite (right_motor_in ,LOW);
+    analogWrite (left_motor_PWM , 255);
+    digitalWrite (left_motor_in , LOW);
+/*
   if (distance_front > 25){
     Control_Servo.write(90);
-     analogWrite (right_motor_PWM , Speed);
+     analogWrite (right_motor_PWM , 255);
     digitalWrite (right_motor_in ,LOW);
-    analogWrite (left_motor_PWM , Speed);
+    analogWrite (left_motor_PWM , 255);
     digitalWrite (left_motor_in , LOW);
   }
-  else
+  else  //back
    { Control_Servo.write(90);
     analogWrite (right_motor_PWM , 0);
     digitalWrite (right_motor_in ,LOW);
     analogWrite (left_motor_PWM , 0);
     digitalWrite (left_motor_in , LOW);
    }
+   */
     }
-  else if(Data == 'B' ) //Backward
-  {
-  //Initialization of Rear Ultrasonic
-  digitalWrite (trig_pin_rear,LOW);
+  else if(Data == 'F' ){
+   digitalWrite (trig_pin_rear,LOW);
   delayMicroseconds(2);
   digitalWrite (trig_pin_rear,HIGH);
   delayMicroseconds(10);
@@ -101,49 +108,49 @@ if (HC05.available())
   int duration_rear=pulseIn (echo_pin_rear,HIGH);
   float x_rear = duration_rear*0.034/2;
   float distance_rear = constrain (x_rear, 0 ,400);
-  
- //Print Rear Ultrasonic Readings
-   Serial.print ("sensor rear: "); 
-   Serial.println (distance_rear);
-   
-   //Check on Distance
-   if (distance_rear > 25){
-    Control_Servo.write(90);
-    analogWrite (right_motor_PWM , Speed);
+  //Serial.println (distance_rear);
+
+  Control_Servo.write(90);
+    analogWrite (right_motor_PWM , 255);
     digitalWrite (right_motor_in , HIGH);
-    analogWrite (left_motor_PWM , Speed);
+    analogWrite (left_motor_PWM , 255);
+    digitalWrite (left_motor_in , HIGH);
+   /*
+   if (distance_rear > 25){
+     Control_Servo.write(90);
+    analogWrite (right_motor_PWM , 255);
+    digitalWrite (right_motor_in , HIGH);
+    analogWrite (left_motor_PWM , 255);
     digitalWrite (left_motor_in , HIGH);
     }
     else 
-   {
-    Control_Servo.write(90);
+   { Control_Servo.write(90);
     analogWrite (right_motor_PWM , 0);
     digitalWrite (right_motor_in ,LOW);
     analogWrite (left_motor_PWM , 0);
     digitalWrite (left_motor_in , LOW);
    }
-    
+    */
   }
- else if(Data == 'L') //Left
- {     
+ else if(Data == 'L'){    //left 
     Control_Servo.write(70);
-    analogWrite (right_motor_PWM , Speed);
+    analogWrite (right_motor_PWM , 255);
     digitalWrite (right_motor_in , HIGH);
-    analogWrite (left_motor_PWM , Speed);
+    analogWrite (left_motor_PWM , 255);
     digitalWrite (left_motor_in , HIGH);
+    
     }
+    
  
-  else if(Data == 'R')//Right
-  { 
-    Control_Servo.write(110);
-    analogWrite (right_motor_PWM , Speed);
+  else if(Data == 'R'){ // right
+  Control_Servo.write(120);
+    analogWrite (right_motor_PWM , 255);
     digitalWrite (right_motor_in , HIGH);
-    analogWrite (left_motor_PWM , Speed);
-    digitalWrite (left_motor_in , HIGH);
-    }
+    analogWrite (left_motor_PWM , 255);
+    digitalWrite (left_motor_in , HIGH);}
 
-    else if(Data == 'S')//Stop
-    { 
+    else if(Data == 'S'){ // right
+
     analogWrite (right_motor_PWM , 0);
     digitalWrite (right_motor_in , HIGH);
     analogWrite (left_motor_PWM , 0);

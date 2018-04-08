@@ -76,7 +76,13 @@ if (HC05.available())
    float distance_front = constrain (x_front, 0 ,400);
 Serial.print ("sensor2");
 Serial.println (distance_front);
+Control_Servo.write(90);
+     analogWrite (right_motor_PWM , 125);
+    digitalWrite (right_motor_in ,LOW);
+    analogWrite (left_motor_PWM , 125);
+    digitalWrite (left_motor_in , LOW);
 
+/*
   if (distance_front > 25){
     Control_Servo.write(90);
      analogWrite (right_motor_PWM , 125);
@@ -91,6 +97,8 @@ Serial.println (distance_front);
     analogWrite (left_motor_PWM , 0);
     digitalWrite (left_motor_in , LOW);
    }
+  }
+  */
     }
   else if(Data == 'F' ){
    digitalWrite (trig_pin_rear,LOW);
@@ -104,6 +112,12 @@ Serial.println (distance_front);
   float distance_rear = constrain (x_rear, 0 ,400);
   Serial.println (distance_rear);
 
+  Control_Servo.write(90);
+    analogWrite (right_motor_PWM , 125);
+    digitalWrite (right_motor_in , HIGH);
+    analogWrite (left_motor_PWM , 125);
+    digitalWrite (left_motor_in , HIGH);
+  /*
    if (distance_rear > 25){
      Control_Servo.write(90);
     analogWrite (right_motor_PWM , 125);
@@ -120,6 +134,8 @@ Serial.println (distance_front);
    }
     
   }
+  */
+  }
  else if(Data == 'L'){    //left 
     Control_Servo.write(70);
     analogWrite (right_motor_PWM , 125);
@@ -128,6 +144,7 @@ Serial.println (distance_front);
     digitalWrite (left_motor_in , HIGH);
     
     }
+    
  
   else if(Data == 'R'){ // right
   Control_Servo.write(110);
