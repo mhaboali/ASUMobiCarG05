@@ -1,7 +1,7 @@
                                                             costs
                                        
 
-  mohamed hassan :5+10battery+10(jumpers&glue)
+  mohamed hassan :5+10battery+10(jumpers&glue)+20(ir sensor).
 
   mostafa raouf  :25+10+15+10
 
