@@ -31,7 +31,7 @@ void ISR_timerone()
   float RPM = (counter_pulse / diskslots)*60;  // calculate RPM for Motor
   float motorspeed= (((wheeldiameter/2)/10)*RPM* 0.10472); // Calculate Speed in cm per sec
   Serial.print(motorspeed);
-  Serial.print("Cm/Sec");
+  Serial.println("Cm/Sec");
   counter_pulse = 0;  //  reset counter to zero  
   Timer1.attachInterrupt(ISR_timerone);  // Enable the timer
 }
