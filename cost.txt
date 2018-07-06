@@ -11,7 +11,7 @@
 
   mohand gamal  : 24+45 + 65 motor driver + 15 track 
 
-  mostafa ezz   :30 + 10 batteries + 10 wires + l293d 20 + 5 IRs + 10 motor + 20 l298n + 50 atmega of rafraf 
+  mostafa ezz   :30 + 10 batteries + 10 wires + l293d 20 + 10 motor + 20 l298n + 20 l293d +5 IRs + 50 atmega of rafraf 
 
   hema       :22
 
